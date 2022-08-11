@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
-import schoolTeacherVideo from './sources/school_teacher_compressed.mp4'
+// added temporal image as background
+import machuPicchuImage from './sources/pexels-macchu-picchu_custom.jpg';
+// import schoolTeacherVideo from './sources/school_teacher_compressed.mp4'
 import './styles/HomePageComponent.css'
 // white social media icons
 import facebookWhite from './sources/icons/Facebookwhite.png'
@@ -137,9 +139,10 @@ export const HomePageComponent = () => {
               <span>LO QUE NECESITAS. LO TENEMOS!</span>
               <button>VER PRODUCTOS</button>
             </div>
-            <video id='presentation' width='100%' height='auto' className='videoTag' autoPlay loop muted>
+            <img id='presentation' src={machuPicchuImage} alt="macchu picchu landscape" />
+            {/* <video id='presentation' width='100%' height='auto' className='videoTag' autoPlay loop muted>
                 <source src={schoolTeacherVideo} type='video/mp4' />
-            </video>
+            </video> */}
             <div className="square"></div>
         </div>
         <section className='elegirnos'>

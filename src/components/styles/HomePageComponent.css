@@ -55,6 +55,10 @@ video#presentation{
     height:auto;
     /* max-height: auto; */
 }
+img#presentation{
+    max-width: 100%;
+    height: auto;
+}
 .presentation-container #overlay{
     position: absolute;
     width: 100%;
@@ -63,7 +67,7 @@ video#presentation{
     z-index: 2;
     background-color: rgb(15, 80, 160); 
     opacity: 0.68;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(3px);
 }
 .presentation-container #content{
     text-align: center;
