@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 // added temporal image as background
-import machuPicchuImage from './sources/pexels-macchu-picchu_custom.jpg';
+import machuPicchuImage from './sources/pexels-macchu-picchu_custom.webp';
 // import schoolTeacherVideo from './sources/school_teacher_compressed.mp4'
 import './styles/HomePageComponent.css'
 // white social media icons
@@ -10,8 +10,7 @@ import twitterWhite from './sources/icons/Twitterwhite.png'
 // images
 import taiLoy from './sources/tai_loy.png';
 // import cocaCola from './sources/cocaCola.png';
-// import candy from './sources/candy.jpg';
-import candy from './sources/candy2.png';
+import candy from './sources/candy.jpg';
 import mousePadTaza from './sources/mouse_pad_taza.jpg';
 import papasLays from './sources/papitaLays.png'
 //import arrow icos
