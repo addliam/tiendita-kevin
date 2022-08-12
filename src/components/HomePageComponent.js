@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 // added temporal image as background
 import machuPicchuImage from './sources/pexels-macchu-picchu_custom.webp';
 // import schoolTeacherVideo from './sources/school_teacher_compressed.mp4'
@@ -29,13 +29,13 @@ import whatsappBlue from './sources/icons/WhatsAppBlue.png'
 // show only on mobile devices
 import burgerMenuWhite from './sources/icons/menuIcon.png'
 
-function ElegirnosItemComponent({image}) {
+function ElegirnosItemComponent({image,title}) {
   return (<div className="elegirnos-item">
         <div className="elegirnos-image">
           <img src={image} alt="description from lorem ipsum" />
         </div>
         <div className="elegirnos-description">
-          <h4>CALIDAD</h4>
+          <h4>{title}</h4>
           <span>Contamos con socios clave quienes garantizan y respaldan la calidad de nuestros productos</span>
         </div>
       </div>);
@@ -89,8 +89,15 @@ export const HomePageComponent = () => {
   const [numberElementVisible, setNumberElementVisible] = useState(0);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const LENGTH_PRODUCTS = 5;
-  // start all invisible
-
+  useEffect(() => {
+    const windowWidth = window.innerWidth;
+    if (windowWidth >= 490){
+      setShowMobileMenu(true);
+    }
+    return () => {
+    }
+  }, [])
+  
   const handleButtonNext = () =>{
     setNumberElementVisible((c)=>{
       if (c>=LENGTH_PRODUCTS-1){
@@ -126,16 +133,17 @@ export const HomePageComponent = () => {
           <button onClick={()=>switchShowMobileMenu()} id='menu-burger'>
             <img src={burgerMenuWhite} width='32px' height='32px' alt="menu burger white for navegation bar" />
           </button>
+          {/* <div className="navbar-items"> */}
           <div className="navbar-items" style={{display:showMobileMenu?'flex':'none'}}>
-          <a className='link-page' href="./#">Inicio</a>
-          <a className='link-page' href="./#">Productos</a>
-          <a className='link-page' href="./#">Acerca de</a>
-          <a className='link-page' href="./#">Contacto</a>
+            <a className='link-page' href="./#">Inicio</a>
+            <a className='link-page' href="./#">Productos</a>
+            <a className='link-page' href="./#">Acerca de</a>
+            <a className='link-page' href="./#">Contacto</a>
           <div className="social-media">
             <a href="./#">
             <img src={facebookWhite} width='28px' height='28px' alt="facebook logo white" />
             </a>
-            <a href="./#">
+            <a href="https://www.instagram.com/tienditakevin">
             <img src={instagramWhite} width='28px' height='28px' alt="instagram logo white" />
             </a>
             <a href="./#">
@@ -162,9 +170,9 @@ export const HomePageComponent = () => {
           <h3>POR QUE ELEGIRNOS?</h3>
           <div className="elegirnos-reasons">
             <div className="elegirnos-container">
-              <ElegirnosItemComponent image={mousePadTaza} />
-              <ElegirnosItemComponent image={candy} />
-              <ElegirnosItemComponent image={taiLoy} />
+              <ElegirnosItemComponent title={'CALIDAD'} image={mousePadTaza} />
+              <ElegirnosItemComponent title={'EXPERIENCIA'} image={candy} />
+              <ElegirnosItemComponent title={'VARIEDAD'} image={taiLoy} />
             </div>
           </div>
         </section>
@@ -231,7 +239,7 @@ export const HomePageComponent = () => {
             <div className="contact-item">
               <img width='32px' height='32px' src={instagramBlue} alt="instagram icon in blue color" />
               <span>Instagram</span>
-              <p>@tiendita.kevin</p>
+              <p><a href='https://www.instagram.com/tienditakevin'>@tienditakevin</a></p> 
             </div>
           </div>
         </footer>
