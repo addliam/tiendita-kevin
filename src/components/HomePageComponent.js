@@ -26,6 +26,8 @@ import waveBlueSky from './sources/WaveBlueSky.svg';
 import facebookBlue from './sources/icons/FacebookBlue.png'
 import instagramBlue from './sources/icons/InstagramBlue.png'
 import whatsappBlue from './sources/icons/WhatsAppBlue.png'
+// show only on mobile devices
+import burgerMenuWhite from './sources/icons/menuIcon.png'
 
 function ElegirnosItemComponent({image}) {
   return (<div className="elegirnos-item">
@@ -85,6 +87,7 @@ const ClientOpinionComponent = ({avatarImage,clientName,clientLastName}) => {
 export const HomePageComponent = () => {
   // refer to the index for more easy
   const [numberElementVisible, setNumberElementVisible] = useState(0);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const LENGTH_PRODUCTS = 5;
   // start all invisible
 
@@ -111,14 +114,23 @@ export const HomePageComponent = () => {
   // TODO: make an arawy of properties for productos estrellas
   const productEstrellasTitle = ["Papitas lays","Doritos","Empanada Torres","Coca cola","Cheetos picantes"]
 
+  const switchShowMobileMenu = () =>{
+    setShowMobileMenu(prevState=>{
+      return prevState ? false : true;
+    })
+  }
   return (
     <div>
         <nav className='navbar'>
           <span id='logo'>KEVIN</span>
-          <a href="./#">Inicio</a>
-          <a href="./#">Productos</a>
-          <a href="./#">Acerca de</a>
-          <a href="./#">Contacto</a>
+          <button onClick={()=>switchShowMobileMenu()} id='menu-burger'>
+            <img src={burgerMenuWhite} width='32px' height='32px' alt="menu burger white for navegation bar" />
+          </button>
+          <div className="navbar-items" style={{display:showMobileMenu?'flex':'none'}}>
+          <a className='link-page' href="./#">Inicio</a>
+          <a className='link-page' href="./#">Productos</a>
+          <a className='link-page' href="./#">Acerca de</a>
+          <a className='link-page' href="./#">Contacto</a>
           <div className="social-media">
             <a href="./#">
             <img src={facebookWhite} width='28px' height='28px' alt="facebook logo white" />
@@ -130,6 +142,8 @@ export const HomePageComponent = () => {
             <img src={twitterWhite} width='28px' height='28px' alt="twitter logo white" />
             </a>
           </div>  
+          </div>
+          
         </nav>
         <div className="presentation-container">
             <div id="overlay"></div>
@@ -142,15 +156,17 @@ export const HomePageComponent = () => {
             {/* <video id='presentation' width='100%' height='auto' className='videoTag' autoPlay loop muted>
                 <source src={schoolTeacherVideo} type='video/mp4' />
             </video> */}
-            <div className="square"></div>
         </div>
+        
         <section className='elegirnos'>
           <h3>POR QUE ELEGIRNOS?</h3>
+          <div className="elegirnos-reasons">
             <div className="elegirnos-container">
               <ElegirnosItemComponent image={mousePadTaza} />
               <ElegirnosItemComponent image={candy} />
               <ElegirnosItemComponent image={taiLoy} />
             </div>
+          </div>
         </section>
         <section className="productos-estrella">
           <h3>PRODUCTOS ESTRELLA</h3>
@@ -194,12 +210,12 @@ export const HomePageComponent = () => {
           <h3>ENCUENTRANOS EN</h3>
           <p>San Juan de Lurigancho 15438. Juan Pablo II 1 Zona</p>
           <div className="maps-container">
-            <iframe title='store location' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.7263959801048!2d-76.9862866708317!3d-11.98103468757858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c56313e7425f%3A0x35ffa0b32806a165!2sTiendita%20Kevin!5e0!3m2!1ses!2spe!4v1660245550299!5m2!1ses!2spe&callback=initAutocomplete" width="996" height="480" style={{"border":0,allowFullScreen:"on",loading:"lazy",referrerPolicy:"no-referrer-when-downgrade"}}></iframe>
+            <iframe id='google-map' title='store location' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.7263959801048!2d-76.9862866708317!3d-11.98103468757858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c56313e7425f%3A0x35ffa0b32806a165!2sTiendita%20Kevin!5e0!3m2!1ses!2spe!4v1660245550299!5m2!1ses!2spe&callback=initAutocomplete" width="996" height="480" style={{"border":0,allowFullScreen:"on",loading:"lazy",referrerPolicy:"no-referrer-when-downgrade"}}></iframe>
           </div>
         </section>
         <footer className='homepage-foot'>
-          <img id='wave-blue-sky' src={waveBlueSky} alt="wave blue sky" />
-          <img id='wave-blue-glass' src={waveBlueGlass} alt="wave blue glass" />
+          <img className='wave-down' id='wave-blue-sky' src={waveBlueSky} alt="wave blue sky" />
+          <img className='wave-down' id='wave-blue-glass' src={waveBlueGlass} alt="wave blue glass" />
           <h3 id='contact-text'>CONTACTO</h3>
           <div className="contacts-container">
             <div className="contact-item">
